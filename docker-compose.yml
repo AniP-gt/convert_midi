@@ -1,0 +1,14 @@
+version: '3.8'
+
+services:
+  midi_converter:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    volumes:
+      - .:/app
+    working_dir: /app
+    # StudioDrummerのMIDIを変換する際は↓のコマンドを実行
+    # command: /app/convert_midi.sh
+    # フォルダ名を変更する際は↓のコマンドを実行
+    command: ruby /app/rename_midi_file.rb
