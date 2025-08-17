@@ -11,4 +11,6 @@ services:
     # StudioDrummerのMIDIを変換する際は↓のコマンドを実行
     # command: /app/convert_midi.sh
     # フォルダ名を変更する際は↓のコマンドを実行
-    command: ruby /app/rename_midi_file.rb
+    # command: ruby /app/rename_midi_file.rb
+    # MIDIファイルを整理する際は↓のコマンドを実行
+    command: ruby /app/organize_midi_files.rb

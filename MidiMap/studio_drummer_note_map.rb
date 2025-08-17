@@ -73,3 +73,4 @@ NOTE_MAP = {
   60 => 36,   # Kick - Open
   36 => 36    # Kick - Dampened
 }
+

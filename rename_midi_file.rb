@@ -1,7 +1,7 @@
 require 'fileutils'
 
 # MIDIファイルのルートディレクトリ
-ROOT_DIR = "Covert MIDI Files"
+ROOT_DIR = "Converted MIDI Files"
 
 # フォルダ内のMIDIファイルをリネームするメソッド
 def rename_midi_files_in_folder(bpm_path, group_name)
