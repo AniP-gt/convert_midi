@@ -1,0 +1,18 @@
+{
+  "name": "convert-midi",
+  "version": "1.0.0",
+  "description": "MIDI file converter and organizer",
+  "main": "midi_converter.js",
+  "scripts": {
+    "convert": "node midi_converter.js",
+    "rename": "node rename_midi_file.js",
+    "organize": "node organize_midi_files.js"
+  },
+  "keywords": ["midi", "music", "converter"],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "jzz": "^1.7.9",
+    "jzz-midi-smf": "^1.8.4"
+  }
+}
