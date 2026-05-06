@@ -6,7 +6,11 @@
   "scripts": {
     "convert": "node midi_converter.js",
     "rename": "node rename_midi_file.js",
-    "organize": "node organize_midi_files.js"
+    "organize": "node organize_midi_files.js",
+    "build": "tsc",
+    "convert:ts": "ts-node midi_converter.ts",
+    "rename:ts": "ts-node rename_midi_file.ts",
+    "organize:ts": "ts-node organize_midi_files.ts"
   },
   "keywords": ["midi", "music", "converter"],
   "author": "",
@@ -14,5 +18,10 @@
   "dependencies": {
     "jzz": "^1.7.9",
     "jzz-midi-smf": "^1.8.4"
+  },
+  "devDependencies": {
+    "@types/node": "^20.11.0",
+    "ts-node": "^10.9.2",
+    "typescript": "^5.3.3"
   }
 }
