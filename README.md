@@ -1,5 +1,12 @@
 ## 使い方
 
+### 準備
+
+1.  依存関係をインストール:
+    ```bash
+    npm install
+    ```
+
 ### MIDIファイル変換
 
 1.  **MIDIファイルの準備:**
@@ -7,42 +14,27 @@
     -   `MIDI Files`フォルダの中に、ジャンルごとのフォルダ（例: `Pop`, `Rock`）を作成し、その中にBPMごとのフォルダ（例: `110BPM`, `120BPM`）を作成して、MIDIファイルを格納してください。
     -   例：`MIDI Files/Pop/110BPM/sample.mid`
 
-2.  **Docker環境の構築:**
-    -   このリポジトリのルートディレクトリで、以下のコマンドを実行してDockerイメージをビルドし、コンテナを起動してください。
-        ```bash
-        docker-compose up --build
-        ```
-    -   初回はイメージのビルドに時間がかかる場合があります。
-
-3.  **MIDIファイル変換スクリプトの実行:**
-    -   `docker-compose.yml`の`command`を以下のように変更することで、MIDI変換スクリプトを実行できます。
-        ```yaml
-        command: /app/convert_midi.sh
-        ```
-    -   `docker-compose.yml`を編集後、以下のコマンドでコンテナを再起動してください。
-        ```bash
-        docker-compose up --build
-        ```
-    -   変換されたMIDIファイルは、`Covert MIDI Files`フォルダ内に、元のフォルダ構造を維持した状態で出力されます。
+2.  **変換スクリプトの実行:**
+    ```bash
+    npm run convert:ts
+    ```
+    -   変換されたMIDIファイルは、`Converted MIDI Files`フォルダ内に、元のフォルダ構造を維持した状態で出力されます。
 
 ### MIDIファイルのリネーム
 
-1.  **Docker環境の構築:**
-    -   上記と同様にDocker環境を構築してください。
+```bash
+npm run rename:ts
+```
+-   `Converted MIDI Files`フォルダ内のMIDIファイルが、`[ジャンル名]_[BPMフォルダ名]_V_[ファイル名].mid`という形式でリネームされます。
 
-2.  **リネームスクリプトの実行:**
-    -   `docker-compose.yml`の`command`が以下になっていることを確認してください。
-        ```yaml
-        command: ruby /app/rename_midi_file.rb
-        ```
-    -   `docker-compose.yml`を編集後、以下のコマンドでコンテナを再起動してください。
-        ```bash
-        docker-compose up --build
-        ```
-    -   `Covert MIDI Files`フォルダ内のMIDIファイルが、`[ジャンル名]_[BPMフォルダ名]_V_[ファイル名].mid`という形式でリネームされます。
+### MIDIファイルの整理
 
-### 注意点
+```bash
+npm run organize:ts
+```
+-   `Converted MIDI Files`フォルダ内のMIDIファイルをジャンルごとに整理します。
 
--   `note_map.rb`でノートマップを編集することで、MIDIノートの変換ルールを変更できます。
--   `convert_midi.sh`は、`MIDI Files`フォルダ内のすべての`.mid`ファイルを変換します。
--   `rename_midi_file.rb`は、`Covert MIDI Files`フォルダ内のすべての`.mid`ファイルをリネームします。
+### ノートマップの編集
+
+-   `MidiMap/modo_drum_note_map.ts`を編集して、MIDIノートの変換ルールを変更できます。
+-   Studio Drummerの場合は`MidiMap/studio_drummer_note_map.ts`を使用してください。
